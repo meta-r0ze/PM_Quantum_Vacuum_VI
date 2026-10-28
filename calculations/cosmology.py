@@ -103,11 +103,11 @@ def print_derivation(name, tag, latex_eq, calc_val, ref_key, unit="", latex_mode
             print_latex_tag(tag + "Sigma", f"{sigma:.2f}")
 
             if sigma < 1.0:
-                acc_text = f"matches the experimental consensus to within ${sigma:.2f}\\sigma$."
+                acc_text = f"matches the experimental consensus to within ${sigma:.2f}\\sigma$"
             elif sigma < 3.0:
-                acc_text = f"lies within ${sigma:.2f}\\sigma$ of the observed value."
+                acc_text = f"lies within ${sigma:.2f}\\sigma$ of the observed value"
             else:
-                acc_text = f"deviates by ${sigma:.2f}\\sigma$ from the observed value."
+                acc_text = f"deviates by ${sigma:.2f}\\sigma$ from the observed value"
             print_latex_tag(tag + "AccText", acc_text)
         return
 
