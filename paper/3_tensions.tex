@@ -1,57 +1,48 @@
-\section{Resolution of the Late-Universe Tensions}
-This single, parameter-free Lattice Load Factor simultaneously resolves the two primary tensions of modern cosmology.
-
+\section{Conditional Late-Universe Rescalings}
 \CatchFileBetweenTags{\HubbleLateVal}{calculations/cosmology.tex}{HubbleLateVal}
+\CatchFileBetweenTags{\SGeoVal}{calculations/cosmology.tex}{S8GeoVal}
+\CatchFileBetweenTags{\HInputSigma}{calculations/cosmology.tex}{HubbleLateInputSigma}
+\CatchFileBetweenTags{\SInputSigma}{calculations/cosmology.tex}{S8GeoInputSigma}
 
-\subsection{The Hubble Tension (\texorpdfstring{$H_0$}{HO})}
-The late-universe expansion rate is the base rate accelerated by the load factor.
+\subsection{Expansion-rate rescaling}
+Under the stated load rule,
 \begin{equation}
 \begin{split}
-H_0^{late} &= H_0^{early} \times \mathcal{L} = (67.4 \text{ km/s/Mpc}) \times 1.07776 \\
-& \approx \mathbf{\HubbleLateVal}
+H_0^{\rm late}&=H_0^{\rm early}\mathcal L\\
+&=(67.4\ \mathrm{km/s/Mpc})\frac{1491}{1376}\\
+&\approx73.03\ \mathrm{km/s/Mpc}.
 \end{split}
 \end{equation}
-The ``tension" is a direct measurement of the difference between the idle and loaded states of the vacuum.
-\begin{table}[h!]
-\centering
-\caption{Resolution of the Hubble Tension.}
-\begin{tabular}{l c l}
-\hline
-\textbf{Meas./Pred.} & \textbf{Value} & \textbf{Status} \\
-\hline
-Planck 2018 (CMB) & $67.4 \pm 0.5$ & Unloaded Rate ($H_0^{early}$) \\
-SH0ES (Supernovae) & $73.0 \pm 1.0$ & Loaded Rate ($H_0^{late}$) \\
-\textbf{Geometric (Loaded)} & \textbf{72.641133} & \textbf{Resolves Tension} \\
-\hline
-\end{tabular}
-\end{table}
+The unrounded result is $73.032994186\ldots$ km/s/Mpc. Treating $\mathcal L$ as exact, the draft early-rate uncertainty $0.5$ propagates to $0.541787791\ldots$ km/s/Mpc. This accounts only for uncertainty in that input, not for uncertainty in the load rule or cosmological inference.
 
-\CatchFileBetweenTags{\SGeoVal}{calculations/cosmology.tex}{S8GeoVal}
-
-%<*S8GeoVal>0.77197033%</S8GeoVal>
-%<*S8GeoEq>S_8^{Planck} / \mathcal{L}%</S8GeoEq>
-%<*S8GeoExperimentalValue>\qty{0.776 \pm 0.017}{}~\cite{DES-Y3}%</S8GeoExperimentalValue>
-%<*S8GeoDiff>-4.03e-03%</S8GeoDiff>
-%<*S8GeoSigma>0.24%</S8GeoSigma>
-%<*S8GeoAccText>matches the experimental consensus to within $0.24\sigma$.%</S8GeoAccText>
-
-
-\subsection{The Clustering Tension (\texorpdfstring{$S_8$}{S8})}
-The accelerated expansion of the loaded lattice acts as a \textbf{Geometric Damping} force on the growth of cosmic structure. The observed late-universe clustering ($S_8^{obs}$) is the primordial value predicted by Planck ($S_8^{pred}$) suppressed by this expansion drag.
+\subsection{Clustering rescaling}
+Keeping the paper's inverse-load rule requires updating the clustering number at the same time:
 \begin{equation}
-S_8^{obs} = \frac{S_8^{pred}}{\mathcal{L}} = \frac{0.832}{1.07776} \approx \mathbf{\SGeoVal}
+\begin{split}
+S_8^{\rm obs}&=\frac{S_8^{\rm input}}{\mathcal L}
+=\frac{0.832}{1491/1376}\\
+&=0.767828303\ldots.
+\end{split}
 \end{equation}
-This prediction lands squarely within the range measured by weak lensing surveys, resolving the tension with the CMB prediction.
-\begin{table}[h!]
+The draft input uncertainty $0.013$ becomes $0.011997317\ldots$ under this exact-factor rescaling. The older value $0.77197$ used the two-term load and must not be retained with the revised Hubble result.
+
+\begin{table*}[t]
 \centering
-\caption{Resolution of the $S_8$ Tension.}
-\begin{tabular}{l c l}
+\caption{Draft reference inputs and conditional rescalings. Quoted observations retain the paper's original datasets; these are not a new likelihood analysis. Model uncertainties below propagate only the early/reference input.}
+\begin{tabular}{lcc}
 \hline
-\textbf{Source} & \textbf{$S_8$ Value} & \textbf{Status} \\
+Quantity & Draft input or late reference & Revised conditional output\\
 \hline
-Planck 2018 (CMB) & $0.832 \pm 0.013$ & Prediction (Undamped) \\
-DES Y3 / KiDS-1000 & $0.776 \pm 0.017$ & Observation (Damped) \\
-\textbf{Geometric (Damped)} & \textbf{0.77197} & \textbf{Resolves Tension} \\
+$H_0$ (km/s/Mpc) & $67.4\pm0.5$ early; $73.0\pm1.0$ late & $73.033\pm0.542$\\
+$S_8$ & $0.832\pm0.013$ input; $0.776\pm0.017$ late & $0.76783\pm0.01200$\\
 \hline
 \end{tabular}
-\end{table}
+\end{table*}
+
+\subsection{A joint consistency constraint}
+The same multiplier in the two rules gives the exact relation
+\begin{equation}
+H_0^{\rm late}S_8^{\rm obs}
+=H_0^{\rm early}S_8^{\rm input}.
+\end{equation}
+This is proved in Lean. Consequently, changing a common load factor to improve one comparison also changes the other; the two outputs cannot be tuned independently. The draft central late targets do not satisfy this equality exactly, although quoted uncertainties must be considered before any statistical conclusion. A joint cosmological likelihood, with a specified expansion and growth history, is needed to test the rule as a physical model.

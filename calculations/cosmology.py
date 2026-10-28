@@ -141,7 +141,7 @@ def main():
 
     if not args.latex:
         print("\n" + "="*60)
-        print("  PAPER IV: COSMOLOGY CALCULATIONS")
+        print("  PAPER VI: COSMOLOGY CALCULATIONS")
         print("="*60 + "\n")
 
     # --- 1. PRIMORDIAL UNIVERSE ---
@@ -167,18 +167,32 @@ def main():
     # Lattice Load Factor (L)
     sq = 1.0 / (2.0 * NU)
     st = CHI / DELTA
-    load_factor = 1.0 + sq + st
-    print_derivation("Lattice Load Factor (L)", "LoadFactor", r"1 + \frac{1}{2\nu} + \frac{\chi}{\Delta}", load_factor, None, "", args.latex)
+    sm = 1.0 / (D * DELTA)
+    load_factor = 1.0 + sq + st + sm
+    print_derivation("Lattice Load Factor (L)", "LoadFactor", r"1 + \frac{1}{2\nu} + \frac{\chi}{\Delta} + \frac{1}{D\Delta}", load_factor, None, "", args.latex)
+
+    # Each quantity below is a substrate-budget term; their sum as a
+    # cosmological load is a constitutive rule, not a consequence of orthogonality.
+    if args.latex:
+        print_latex_tag("QuantizationStressVal", format_float_latex(sq))
+        print_latex_tag("TopologicalStressVal", format_float_latex(st))
+        print_latex_tag("ManifoldStressVal", format_float_latex(sm))
 
     # Hubble Tension
     h0_early_ref = REFS["H0_early"].value
     h0_late_geo = h0_early_ref * load_factor
     print_derivation("Hubble Constant (Late)", "HubbleLate", r"H_0^{early} \times \mathcal{L}", h0_late_geo, "H0_late", "km/s/Mpc", args.latex)
 
+    if args.latex:
+        print_latex_tag("HubbleLateInputSigma", format_float_latex(REFS["H0_early"].uncertainty * load_factor))
+
     # S8 Tension
     s8_planck_ref = REFS["S8_planck"].value
     s8_geo = s8_planck_ref / load_factor
     print_derivation("S8 Parameter (Late)", "S8Geo", r"S_8^{Planck} / \mathcal{L}", s8_geo, "S8_lensing", "", args.latex)
+
+    if args.latex:
+        print_latex_tag("S8GeoInputSigma", format_float_latex(REFS["S8_planck"].uncertainty / load_factor))
 
     # --- 3. THE DARK SECTOR ---
     if not args.latex: print("\n--- SECTION VII: THE DARK SECTOR ---")

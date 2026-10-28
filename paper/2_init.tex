@@ -16,7 +16,7 @@ The spectral index $n_s$ measures the deviation from perfect scale-invariance ($
 n_s = 1 - S_Q = \SpectralIndexEq = 1 - \frac{1}{32} = \mathbf{\SpectralIndexVal}
 \end{equation}
 
-Experimental value: $\SpectralIndexExperimentalValue$. This geometric prediction of $n_s = \SpectralIndexVal$ \SpectralIndexAccText.  This identifying the ``red tilt" of the primordial spectrum as the digital quantization noise of the underlying 32-channel hardware.
+Experimental value: \SpectralIndexExperimentalValue. This geometric prediction of $n_s = \SpectralIndexVal$ \SpectralIndexAccText.  This identifying the ``red tilt" of the primordial spectrum as the digital quantization noise of the underlying 32-channel hardware.
 
 \subsection{Tensor Modes (\texorpdfstring{$r$}{r}): The Gravity Prohibition}
 The tensor-to-scalar ratio $r$ measures the amplitude of primordial gravitational waves. In this framework, gravity is not a fundamental force, but an emergent phenomenon caused by the ``load" of massive topological knots on the lattice (as derived in Paper I, System VI). During the inflationary epoch, the universe is a pure scalar field expansion; topological knots (matter) have not yet condensed. With zero structural load on the lattice, the source term for gravitational waves vanishes.
@@ -56,7 +56,10 @@ The final baryon-to-photon ratio is the product of the initial bit bias and the 
 The final ratio is the product of these two factors:
 
 \begin{equation}
-\eta = \epsilon \cdot \zeta = (1.925 \times 10^{-6}) \times (3.15 \times 10^{-4}) \approx \mathbf{\EtaBaryonVal}
+\begin{split}
+\eta &= \epsilon\zeta = \EtaBaryonEq\\
+&\approx\mathbf{\EtaBaryonVal}.
+\end{split}
 \end{equation}
 
 Experimental Value: \EtaBaryonExperimentalValue
@@ -90,28 +93,27 @@ The expansion rate of this early universe ($H_0^{early}$) represents the ``idle 
 \begin{equation}
 H_0^{early} \propto \frac{H_{sys}}{\Delta} = \frac{\nu + \sigma + \chi}{\Delta} = \frac{23}{43}
 \end{equation}
-This geometric ratio, when scaled to cosmological units, corresponds to the Planck 2018 measurement of $H_0 \approx \mathbf{67.4 \pm 0.5}$ km/s/Mpc. This value represents the fundamental, unloaded expansion rate of the vacuum substrate.
+Here the label ``early refers to a present-day rate inferred from early-universe data, not the expansion rate at the primordial epoch. The ratio $23/43$ is dimensionless. Converting it into an absolute rate requires a dimensional calibration not supplied by the ratio alone. In the following comparison, $67.4\pm0.5$ km/s/Mpc is retained as the draft's external early-rate input; it is not claimed as an independently derived number.
 
 
 \CatchFileBetweenTags{\LoadFactorVal}{calculations/cosmology.tex}{LoadFactorVal}
 \CatchFileBetweenTags{\LoadFactorEq}{calculations/cosmology.tex}{LoadFactorEq}
 
-\section{The Loaded Universe: Derivation of the Lattice Load Factor}
-The late universe is dominated by matter—heavy topological knots ($\Delta^2, \Delta^3$) that place a significant structural load on the vacuum. To maintain causal coherence under this load, the lattice must increase its effective update frequency. This speed-up is quantified by the \textbf{Lattice Load Factor ($\mathcal{L}$)}. We derive $\mathcal{L}$ from two independent, orthogonal stress terms.
+\section{The Loaded Universe: Substrate Budget and Load Factor}
+The revised load model has three dimensionless overheads. The first two are the channel and boundary terms already used above. The third is the single reserved coordinate slot in the $R_M=D\Delta$ manifold budget. With the earlier payload fraction $\eta=(R_M-1)/R_M$, this reservation is exactly its complement, $S_M=1-\eta$.
+\begin{align}
+S_Q&=\frac{1}{2\nu}=\frac{1}{32},\\
+S_T&=\frac{\chi}{\Delta}=\frac{2}{43},\\
+S_M&=\frac{1}{D\Delta}=\frac{1}{172}=1-\frac{171}{172}.
+\end{align}
+Lean checks the coordinate-slot count and this link to the earlier overhead. A uniform distribution of one reserved unit across $R_M$ slots gives $1/R_M$ per slot. This is internal bookkeeping, requiring no cosmological field equation.
 
-\begin{itemize}
-    \item \textbf{Quantization Stress ($S_Q$):} The irreducible noise from the finite bit-depth of the active chiral state space ($\nu=16$). It is the digital overhead of the projection.
-    \begin{equation}
-        S_Q = \frac{1}{2\nu} = \frac{1}{32} = 0.03125
-    \end{equation}
-    
-    \item \textbf{Topological Stress ($S_T$):} The pressure exerted by the continuous Heegner resonance ($\Delta=43$) against the discrete topological boundary ($\chi=2$). It is the analog overhead of the projection.
-    \begin{equation}
-        S_T = \frac{\chi}{\Delta} = \frac{2}{43} \approx 0.04651
-    \end{equation}
-\end{itemize}
-
-These stresses are geometrically orthogonal—one acts on the discrete channel count, the other on the continuous manifold curvature—and therefore sum linearly. The total load factor is the unitary baseline plus these two overheads.
+\textbf{Cosmological load rule.} Assign each overhead unit weight and add it to the unloaded baseline:
 \begin{equation}
-\mathcal{L} = 1 + S_Q + S_T = 1 + 0.03125 + 0.04651 = \mathbf{\LoadFactorVal} \\
+\begin{split}
+\mathcal L&=1+S_Q+S_T+S_M\\
+&=1+\frac1{32}+\frac2{43}+\frac1{172}\\
+&=\frac{1491}{1376}\approx1.0835756.
+\end{split}
 \end{equation}
+The additive weights and the interpretation as a cosmological rate multiplier remain explicit model assumptions. Orthogonality alone does not select an action or transport law. In particular, $S_M$ is paid once here; applying the same coordinate loss again through a separate $\eta$ correction would double-count it unless a distinct operation is specified.

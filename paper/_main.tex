@@ -4,7 +4,7 @@
 \usepackage{amsmath}  % Math formulas
 \usepackage{amssymb}  % Math symbols (like \mathbb, \mathcal)
 \usepackage{graphicx} % Images
-\usepackage[pdfencoding=auto]{hyperref} % Hyperlinks
+\usepackage[pdfencoding=auto,hidelinks]{hyperref} % Hyperlinks
 \usepackage{bm}       % Bold math
 \usepackage{booktabs} % For professional table formatting
 \usepackage{array}    % For better column definitions
@@ -30,12 +30,12 @@
 \begin{document}
 
 % Title Area
-\title{The \texorpdfstring{$E_8$}{E8}-Persistence Theory IV: Informational Cosmology and Lattice Limits}
+\title{Persistence Mechanics of the Quantum Vacuum VI: The Thermodynamics of Persistence at Cosmic Scale}
 
 
 \author{Kate Lenore Meyer}
 \affiliation{Independent Researcher}
-\email{kate.physics@meyerhome.net}
+\email{kate@meyerhome.net}
 
 \date{\today}
 
@@ -55,11 +55,16 @@
 \input{paper/audit}
 \input{paper/conclusion}
 
-%\appendix
-%\input{paper/12_geometric_audits}
+\appendix
+\section{Internal Consequences and Formal Verification}
+The companion \texttt{lean} project links the new coordinate overhead directly to the earlier payload definition and verifies the revised rational outputs. It also proves exact interval propagation for fixed $\mathcal L$ and the invariant product linking the two late-time rescalings.
+
+Two information results use finite substrate assumptions without an external cosmological field equation. First, there is no injective encoding of $C+1$ labels into $C$ slots, or of $C$ old states times more than one independent new input into the same $C$ slots. Retaining reversibility therefore requires additional storage or output outcomes. This does not specify a Hawking-radiation process. Second, independent equal-area cells have area-proportional log state count, with coefficient $\log(q)/a$; its physical normalization remains to be derived.
+
+Running \texttt{./check.sh} in the Lean folder builds the library and audits every project declaration against the standard logical-axiom allowlist. These results distinguish internal consequences, explicit constitutive assumptions and open dynamical links. None of the latter is supplied by an unproved global physical axiom.
 
 % Bibliography
-\bibliography{paper/references}
+% References are provided by the explicit bibliography below.
 
 \begin{thebibliography}{9}
     \bibitem{Planck2018}
