@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd -- "$(dirname -- "$0")"
+project_lake="${PM_LAKE_BIN:-lake}"
+"$project_lake" build
+"$project_lake" env lean AuditStrict.lean
+python3 ../calculations/check_load_consistency.py
