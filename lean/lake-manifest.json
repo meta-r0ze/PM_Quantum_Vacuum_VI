@@ -5,10 +5,10 @@
     {
       "type": "path",
       "scope": "",
-      "name": "pm_nested",
+      "name": "pm_decay",
       "manifestFile": "lake-manifest.json",
       "inherited": false,
-      "dir": "../../PM-3-Nested/lean",
+      "dir": "../../PM-5-Decay/lean",
       "configFile": "lakefile.toml"
     },
     {
@@ -18,6 +18,42 @@
       "manifestFile": "lake-manifest.json",
       "inherited": false,
       "dir": "../../PM-1-Arch/lean",
+      "configFile": "lakefile.toml"
+    },
+    {
+      "type": "path",
+      "scope": "",
+      "name": "pm_nested",
+      "manifestFile": "lake-manifest.json",
+      "inherited": false,
+      "dir": "../../PM-3-Nested/lean",
+      "configFile": "lakefile.toml"
+    },
+    {
+      "type": "path",
+      "scope": "",
+      "name": "pm_dynamics",
+      "manifestFile": "lake-manifest.json",
+      "inherited": false,
+      "dir": "../../PM-4-Dynamics/lean",
+      "configFile": "lakefile.toml"
+    },
+    {
+      "type": "path",
+      "scope": "",
+      "name": "pm_action",
+      "manifestFile": "lake-manifest.json",
+      "inherited": true,
+      "dir": "../../PM-2-Action/lean",
+      "configFile": "lakefile.toml"
+    },
+    {
+      "type": "path",
+      "scope": "",
+      "name": "pm_framework",
+      "manifestFile": "lake-manifest.json",
+      "inherited": true,
+      "dir": "../../PM/lean",
       "configFile": "lakefile.toml"
     },
     {

@@ -27,6 +27,15 @@
 \let\l@en\l@english
 \makeatother
 
+% Support compilation from either the repository root or paper/.
+\IfFileExists{paper/0_abstract.tex}{
+  \def\PMpaperdir{paper/}
+  \def\PMcalculations{calculations/cosmology.tex}
+}{
+  \def\PMpaperdir{}
+  \def\PMcalculations{../calculations/cosmology.tex}
+}
+
 \begin{document}
 
 % Title Area
@@ -39,27 +48,29 @@
 
 \date{\today}
 
-\input{paper/0_abstract}
+\input{\PMpaperdir 0_abstract}
 
 \maketitle % Generates the title block
 
 % Main Content
-\input{paper/1_introduction}
+\input{\PMpaperdir 1_introduction}
 
 % Main Content
-\input{paper/2_init}
-\input{paper/3_tensions}
-\input{paper/4_blackholes}
-\input{paper/5_dark_sector}
+\input{\PMpaperdir 2_init}
+\input{\PMpaperdir 3_tensions}
+\input{\PMpaperdir 4_blackholes}
+\input{\PMpaperdir 5_dark_sector}
 
-\input{paper/audit}
-\input{paper/conclusion}
+\input{\PMpaperdir audit}
+\input{\PMpaperdir conclusion}
 
 \appendix
 \section{Internal Consequences and Formal Verification}
 The companion \texttt{lean} project links the new coordinate overhead directly to the earlier payload definition and verifies the revised rational outputs. It also proves exact interval propagation for fixed $\mathcal L$ and the invariant product linking the two late-time rescalings.
 
 Two information results use finite substrate assumptions without an external cosmological field equation. First, there is no injective encoding of $C+1$ labels into $C$ slots, or of $C$ old states times more than one independent new input into the same $C$ slots. Retaining reversibility therefore requires additional storage or output outcomes. This does not specify a Hawking-radiation process. Second, independent equal-area cells have area-proportional log state count, with coefficient $\log(q)/a$; its physical normalization remains to be derived.
+
+The additional modules establish reversible-label bounds, distinguish the two proposed CP inputs, derive local saturation remainders and convexity, check background dilution and continuity identities, and derive the comparison temperature from a supplied entropy law and first law. Paper VI also imports the earlier common-scale neutrino exclusion. These are conditional mathematical results; they do not supply the missing primordial state, cosmological metric, phase-space dynamics or radiation mechanism.
 
 Running \texttt{./check.sh} in the Lean folder builds the library and audits every project declaration against the standard logical-axiom allowlist. These results distinguish internal consequences, explicit constitutive assumptions and open dynamical links. None of the latter is supplied by an unproved global physical axiom.
 

@@ -102,12 +102,7 @@ def print_derivation(name, tag, latex_eq, calc_val, ref_key, unit="", latex_mode
             print_latex_tag(tag + "Diff", f"{diff:.2e}")
             print_latex_tag(tag + "Sigma", f"{sigma:.2f}")
 
-            if sigma < 1.0:
-                acc_text = f"matches the experimental consensus to within ${sigma:.2f}\\sigma$"
-            elif sigma < 3.0:
-                acc_text = f"lies within ${sigma:.2f}\\sigma$ of the observed value"
-            else:
-                acc_text = f"deviates by ${sigma:.2f}\\sigma$ from the observed value"
+            acc_text = f"differs from the fixed reference by ${sigma:.2f}\\sigma$"
             print_latex_tag(tag + "AccText", acc_text)
         return
 
@@ -122,6 +117,26 @@ def print_derivation(name, tag, latex_eq, calc_val, ref_key, unit="", latex_mode
         print(f"Deviation:  {sigma:+.2f}σ")
     print("")
 
+def mixing_jarlskog(alpha_inverse):
+    """Paper IV CKM.pmJ, conditional on its supplied angle/phase formulas.
+
+    Display arithmetic uses binary floats; Lean certifies rational enclosures.
+    This is the complete unitary matrix invariant, before visible-sector dressing.
+    """
+    s12 = math.pi / 14
+    s13 = 1 / (2 * alpha_inverse + math.pi)
+    c12 = math.sqrt(1 - s12**2)
+    c13 = math.sqrt(1 - s13**2)
+    s23 = ((math.pi + 2) / (alpha_inverse - 4 * math.pi)) / c13
+    c23 = math.sqrt(1 - s23**2)
+    return c12 * s12 * c23 * s23 * c13**2 * s13 * math.sin(math.atan(5 / 2))
+
+
+def geometric_jarlskog():
+    """The older independent PMDynamics.CKM.pm3J formula; not CKM.pmJ."""
+    return ((1 + math.sqrt(5)) / 2)**2 * (2 * (172 - 5) / (32**3 * 5 * 172)) * (171 / 172)
+
+
 # ==========================================
 # 2. MAIN EXECUTION
 # ==========================================
@@ -134,7 +149,8 @@ def main():
     D, DELTA, SIGMA, NU, CHI = 4, 43, 5, 16, 2
     ALPHA_INV = 137.035999212
     ALPHA = 1.0 / ALPHA_INV
-    JARLSKOG = 3.08490e-5 # Derived in Paper I/III
+    JARLSKOG = mixing_jarlskog(ALPHA_INV)
+    J_GEOMETRIC = geometric_jarlskog() # independent older formula, retained for comparison
     H_SYS = NU + SIGMA + CHI # Systemic Channel = 23
     ME_EV = 510998.95 # Electron mass in eV
     PI = math.pi
@@ -151,13 +167,20 @@ def main():
     ns_geo = 1.0 - (1.0 / (2 * NU))
     print_derivation("Spectral Index (ns)", "SpectralIndex", r"1 - \frac{1}{2\nu}", ns_geo, "ns", "", args.latex)
 
-    # Baryon-to-Photon Ratio (eta)
+    # Conditional CP-to-baryon conversion; no baryon-changing dynamics is derived.
+    if args.latex:
+        print_latex_tag("JMatrixVal", to_latex_sci(JARLSKOG, 5))
+        print_latex_tag("JGeometricVal", to_latex_sci(J_GEOMETRIC, 5))
+
     epsilon = JARLSKOG / NU
     zeta = 1.0 / ((PI * DELTA) * (H_SYS + CHI / D))
     eta_geo = epsilon * zeta
     print_derivation("Baryon-to-Photon Ratio (eta)", "EtaBaryon", r"\frac{J}{\nu} \cdot \frac{1}{(\pi\Delta)(H_{sys} + \chi/D)}", eta_geo, "eta", "", args.latex)
 
-    # Matter-Radiation Equality (zeq)
+    print_derivation("Baryon ratio (older geometric CP input)", "EtaBaryonGeo",
+                     r"J_{\rm geo}/(16168\pi)", J_GEOMETRIC / NU * zeta, "eta", "", args.latex)
+
+    # Matter-radiation equality candidate, not derived from dilution dynamics.
     zeq_geo = (PI * DELTA) * (H_SYS + CHI)
     print_derivation("Matter-Radiation Equality (zeq)", "zeq", r"(\pi\Delta)(H_{sys} + \chi)", zeq_geo, "zeq", "", args.latex)
 
@@ -206,7 +229,7 @@ def main():
     omega_ratio_geo = dim_e8 / denom_corr
     print_derivation("DM/Baryon Ratio", "OmegaRatio", r"\frac{\text{dim}(E_8)}{3\nu(1 - \chi/\Delta + \alpha)}", omega_ratio_geo, "omega_ratio", "", args.latex)
 
-    # Neutrino Mass Paradox
+    # Historical contextual-neutrino proposal: upstream Lean excludes its splittings.
     m_min_ev = (ME_EV * PI * ALPHA) / (NU * (DELTA**3))
     sum_mnu_rest = m_min_ev * (1.0 + (1.0 / DELTA) + (1.0 / (DELTA**2)))
     eta_w = SIGMA + 1.0
@@ -216,10 +239,10 @@ def main():
         print_latex_tag("MnuRestVal", f"{sum_mnu_rest * 1000:.1f}") # in meV
         print_latex_tag("MnuWeakVal", f"{sum_mnu_weak * 1000:.0f}") # in meV
     else:
-        print("--- Neutrino Mass Paradox ---")
-        print(f"Gravitational Rest Mass (Cosmology): {sum_mnu_rest:.6f} eV ({sum_mnu_rest*1000:.1f} meV)")
+        print("--- Historical contextual-neutrino proposal (not a viable oscillation fit) ---")
+        print(f"Proposed rest-mass sum: {sum_mnu_rest:.6f} eV ({sum_mnu_rest*1000:.1f} meV)")
         print(f"Target (Cosmology): < {REFS['neutrino_sum_cosmo'].value:.2f} eV (Planck Limit)")
-        print(f"Interaction Mass (Oscillations):   {sum_mnu_weak:.6f} eV ({sum_mnu_weak*1000:.0f} meV)")
+        print(f"Proposed factor-six sum:   {sum_mnu_weak:.6f} eV ({sum_mnu_weak*1000:.0f} meV)")
         print(f"Target (Oscillations): > {REFS['neutrino_sum_osc'].value:.2f} eV (from splittings)")
         print("")
 

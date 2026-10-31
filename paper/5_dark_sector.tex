@@ -1,30 +1,47 @@
-\section{The Nature of the ``Dark" Sector}
-The $E_8$ framework provides a physical identity for the dark components of the universe, framing them not as new particles, but as properties of the substrate itself.
-
-\paragraph{Dark Energy as Entropic Exhaust}
-The vacuum energy ($\rho_{vac}$) was derived in Paper I as the thermal noise floor of the lattice. The Lattice Load Factor $\mathcal{L}$ implies that this energy is not constant. Because the lattice load changes as the universe evolves from radiation- to matter-dominated, the entropic exhaust must also change. This predicts a \textbf{time-varying equation of state for Dark Energy, $w(z)$}, deviating from $w=-1$, a key prediction for upcoming surveys like DESI and Euclid.
-
-\CatchFileBetweenTags{\OmegaRatioSigma}{calculations/cosmology.tex}{OmegaRatioSigma}
-\CatchFileBetweenTags{\OmegaRatioVal}{calculations/cosmology.tex}{OmegaRatioVal}
-\CatchFileBetweenTags{\OmegaRatioExperimentalValue}{calculations/cosmology.tex}{OmegaRatioExperimentalValue}
-\CatchFileBetweenTags{\OmegaRatioSigma}{calculations/cosmology.tex}{OmegaRatioSigma}
-
-\paragraph{Dark Matter as Geometric Mass}
-Dark Matter is not a particle but the total mass-energy of the $E_8$ substrate itself, which gravitationally dominates the energy of the ``software" (the Standard Model fermions) it supports. The abundance ratio is predicted by comparing the total degrees of freedom of the hardware to those of the software. The $E_8$ lattice has a total capacity represented by its 248 dimensions. The Standard Model, in its final stable state, requires three generations, each occupying a $\nu=16$ chiral state space, for a total of $3 \times 16 = 48$ fundamental fermionic states. The ratio is therefore:
+\section{Dark-Sector Hypotheses and Current Constraints}
+\subsection{A load-dependent vacuum density}
+The proposed interpretation identifies vacuum energy with substrate maintenance or thermal noise. A changing load does not by itself specify a density law or an equation of state. If one additionally posits $\rho(a)=\rho_*\mathcal L(a)$ and the separately conserved homogeneous continuity equation, then
 \begin{equation}
-    \frac{\Omega_{DM}}{\Omega_b} = \frac{\text{Hardware Capacity}}{\text{Software States}} = \frac{248}{48} \approx 5.167
+a\rho'(a)=-3(1+w)\rho(a)
 \end{equation}
-Applying thermodynamic corrections for binding and charge (as derived in Paper II) refines this ratio to $\mathbf{\OmegaRatioVal}$, matching the Planck 2018 value of \OmegaRatioExperimentalValue to \OmegaRatioSigma $\sigma$.
+gives
+\begin{equation}
+w(a)=-1-\frac{a\mathcal L'(a)}{3\mathcal L(a)}.
+\end{equation}
+Lean proves the derivative and algebraic equivalence for nonzero density normalization and load. For $a>0$, this expression equals $-1$ exactly when $\mathcal L'(a)=0$. The sign and magnitude of any deviation require an evolution law for $\mathcal L$, and an interacting sector would require an additional exchange term in the continuity equation. No redshift-dependent equation of state has yet been selected by the substrate.
 
-This model predicts a null result for all particle-based dark matter searches.
+\CatchFileBetweenTags{\OmegaRatioVal}{\PMcalculations}{OmegaRatioVal}
+\CatchFileBetweenTags{\OmegaRatioExperimentalValue}{\PMcalculations}{OmegaRatioExperimentalValue}
+\CatchFileBetweenTags{\OmegaRatioSigma}{\PMcalculations}{OmegaRatioSigma}
 
-\CatchFileBetweenTags{\MnuRestVal}{calculations/cosmology.tex}{MnuRestVal}
-\CatchFileBetweenTags{\MnuWeakVal}{calculations/cosmology.tex}{MnuWeakVal}
+\subsection{Mode counts are not yet energy-density ratios}
+One abundance ansatz uses the Lie-algebra dimension $248$ and three assumed generations of $16$ active labels:
+\begin{equation}
+\frac{248}{3\nu}=\frac{31}{6}.
+\end{equation}
+This Lie-algebra dimension is distinct from the rank-eight lattice dimension. Its interpretation as a cosmological capacity count requires an explicit model. If the 48 active labels are a subset of 248 total labels and the dark component is their disjoint complement, the inactive-to-active count is instead
+\begin{equation}
+\frac{248-48}{48}=\frac{25}{6}.
+\end{equation}
+Lean checks this distinction. Moreover, density ratios require the energy weights and occupancies of the two components; equal counts alone do not fix those weights.
 
-\paragraph{The Neutrino Mass Paradox}
-We resolve the tension between cosmological mass limits ($\Sigma m_\nu < 0.12$ eV) and oscillation data ($\Sigma m_\nu \ge 0.06$ eV) via the ``Context-Dependent Mass" operator derived in Paper II.
-\begin{itemize}
-    \item \textbf{Gravitational Rest Mass ($M_{rest}$):} In the decoupled vacuum of cosmology, neutrinos are pure lattice phonons. Their mass follows the inverse resonance hierarchy, summing to $\mathbf{\Sigma m_\nu \approx \MnuRestVal}$ \textbf{meV}. This is the value cosmology measures.
-    \item \textbf{Interaction Mass ($M_{weak}$):} In terrestrial experiments, neutrinos are coupled to the weak force. Their mass is enhanced by the refractive index of the gauge field ($\eta_W = 6$), yielding an effective mass of $\mathbf{\sim \MnuWeakVal}$ \textbf{meV}. This is the value oscillation experiments measure.
-\end{itemize}
-This framework predicts that Euclid will measure a neutrino mass sum consistent with the light rest mass, falsifying the standard interpretation.
+The calculator evaluates the corrected count expression
+\begin{equation}
+R_{\rm ansatz}=\frac{248}{3\nu(1-\chi/\Delta+\alpha)}
+\approx\OmegaRatioVal.
+\end{equation}
+It differs from the draft reference \OmegaRatioExperimentalValue\ by approximately $\OmegaRatioSigma\sigma$. The correction terms and identification with $\Omega_{DM}/\Omega_b$ remain assumptions; this numerical proximity does not establish a dark-matter component, its clustering or the absence of detectable dark-sector particles.
+
+\CatchFileBetweenTags{\MnuRestVal}{\PMcalculations}{MnuRestVal}
+\CatchFileBetweenTags{\MnuWeakVal}{\PMcalculations}{MnuWeakVal}
+
+\subsection{The earlier contextual-neutrino proposal does not fit the splittings}
+The proposed contextual model uses a three-state inverse-resonance tower with largest rest mass near $9.209$ meV, total rest sum approximately $\MnuRestVal$ meV, and a common interaction multiplier six, giving total interaction sum approximately $\MnuWeakVal$ meV. These are candidate formulas, not an established distinction between gravitational and propagation masses.
+
+The upstream Lean results now rule out the common-scale tower as a fit to the two fixed oscillation windows used in the audit. For masses proportional to $(1,1/43,1/43^2)$, the positive squared-mass gaps are proportional to
+\begin{equation}
+(1,1849,1850).
+\end{equation}
+A common multiplier cannot change their ratios, and no relabeling supplies the moderate hierarchy of the two comparison windows. Reading the atmospheric gap instead as $(6m_{\rm rest})^2-m_{\rm rest}^2$ exceeds the fixed Paper V benchmark by more than $17\sigma$. Paper VI imports both exclusions rather than repeating the earlier claim of a resolution.
+
+A small rest-mass sum is therefore insufficient. A replacement must derive a propagation Hamiltonian and its eigenvalue splittings, establish how the gravitational and propagation readouts are related, and evaluate the cosmological inference under that dynamics. A nonuniform response law is not excluded by the common-scale obstruction, but has not been selected by the present substrate model.

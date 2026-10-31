@@ -12,3 +12,11 @@ path = "../../PM-1-Arch/lean"
 [[require]]
 name = "pm_nested"
 path = "../../PM-3-Nested/lean"
+
+[[require]]
+name = "pm_dynamics"
+path = "../../PM-4-Dynamics/lean"
+
+[[require]]
+name = "pm_decay"
+path = "../../PM-5-Decay/lean"

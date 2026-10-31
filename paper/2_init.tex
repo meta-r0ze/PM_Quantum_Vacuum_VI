@@ -1,121 +1,62 @@
-\CatchFileBetweenTags{\SpectralIndexVal}{calculations/cosmology.tex}{SpectralIndexVal}
-\CatchFileBetweenTags{\SpectralIndexEq}{calculations/cosmology.tex}{SpectralIndexEq}
-\CatchFileBetweenTags{\SpectralIndexExperimentalValue}{calculations/cosmology.tex}{SpectralIndexExperimentalValue}
-\CatchFileBetweenTags{\SpectralIndexAccText}{calculations/cosmology.tex}{SpectralIndexAccText}
+\CatchFileBetweenTags{\SpectralIndexVal}{\PMcalculations}{SpectralIndexVal}
+\CatchFileBetweenTags{\SpectralIndexExperimentalValue}{\PMcalculations}{SpectralIndexExperimentalValue}
+\CatchFileBetweenTags{\SpectralIndexAccText}{\PMcalculations}{SpectralIndexAccText}
+\CatchFileBetweenTags{\JMatrixVal}{\PMcalculations}{JMatrixVal}
+\CatchFileBetweenTags{\JGeometricVal}{\PMcalculations}{JGeometricVal}
+\CatchFileBetweenTags{\EtaBaryonVal}{\PMcalculations}{EtaBaryonVal}
+\CatchFileBetweenTags{\EtaBaryonExperimentalValue}{\PMcalculations}{EtaBaryonExperimentalValue}
+\CatchFileBetweenTags{\EtaBaryonAccText}{\PMcalculations}{EtaBaryonAccText}
+\CatchFileBetweenTags{\EtaBaryonGeoVal}{\PMcalculations}{EtaBaryonGeoVal}
+\CatchFileBetweenTags{\EtaBaryonGeoSigma}{\PMcalculations}{EtaBaryonGeoSigma}
+\CatchFileBetweenTags{\zeqVal}{\PMcalculations}{zeqVal}
+\CatchFileBetweenTags{\zeqExperimentalValue}{\PMcalculations}{zeqExperimentalValue}
+\CatchFileBetweenTags{\zeqAccText}{\PMcalculations}{zeqAccText}
 
-\section{The Primordial Universe: Geometric Initialization and Inflation}
-Standard cosmology posits an ad-hoc ``inflation field" to explain the flatness and horizon problems. In our framework, inflation is not driven by a new field, but is the \textbf{geometric phase transition} of the lattice itself as it initializes its causal structure.
+\section{Primordial Initialization: Candidate Rules and Missing Dynamics}
+\subsection{Chiral selection and reversible bookkeeping}
+The channel count $N=2\nu=32$ and selected chiral count $\nu=16$ motivate a proposed initialization transition. These counts alone do not derive inflation, accelerated expansion or an arrow of time. There is also a reversibility constraint: if 32 distinct labels must remain distinguishable, they cannot be injectively mapped into only 16 labels. Retaining a binary record is sufficient, since a 32-label set can be relabeled as 16 labels times two record values. Lean proves both statements. Channel dimensions are not thereby identified with the number of complete microscopic states; the physical state and record spaces must be specified.
 
-\subsection{The Mechanism: Chiral Truncation}
-As established in Paper I, the primordial $E_8$ substrate possesses a total symmetric capacity of $N=32$ degrees of freedom, allowing for bidirectional information flow. To establish a causal Arrow of Time, the Persistence Principle forces a \textbf{Chiral Truncation}, reducing the active state space to the chiral sector of $\nu=16$ channels. This transition is inflation: the propagation of the coordination signal that establishes the causal grid of the universe. This geometric mechanism sets the primordial boundary conditions.
-
-\subsection{The Spectral Index (\texorpdfstring{$n_s$}{ns}): Quantization Noise}
-The spectral index $n_s$ measures the deviation from perfect scale-invariance ($n_s=1$). A continuous vacuum would be perfectly scale-invariant. However, the $E_8$ lattice is discrete, with its primordial state space defined by $N=2\nu \space$ (32). The projection of this discrete grid onto a continuous manifold is inherently lossy, generating \textbf{Quantization Noise} ($S_Q$). The spectral index is simply the unitary fidelity of the projection minus this noise floor.
-
+\subsection{Spectral-index ansatz}
+The channel-overhead term suggests the candidate
 \begin{equation}
-n_s = 1 - S_Q = \SpectralIndexEq = 1 - \frac{1}{32} = \mathbf{\SpectralIndexVal}
+n_s^{\rm ansatz}=1-S_Q=1-\frac{1}{2\nu}=\frac{31}{32}=\SpectralIndexVal.
 \end{equation}
+It is the complement of the same channel term used in the load budget. Compared with the draft reference \SpectralIndexExperimentalValue, it \SpectralIndexAccText. This arithmetic does not compute a primordial two-point function or its logarithmic slope. A perturbation-generation mechanism and a scale-dependent spectrum are needed to identify this quantity with the observed tilt.
 
-Experimental value: \SpectralIndexExperimentalValue. This geometric prediction of $n_s = \SpectralIndexVal$ \SpectralIndexAccText.  This identifying the ``red tilt" of the primordial spectrum as the digital quantization noise of the underlying 32-channel hardware.
+\subsection{Tensor modes and initial conditions}
+Setting the primordial tensor-to-scalar ratio to $r=0$ solely because the initialization phase has no matter load would require an additional argument. A vanishing source is insufficient to establish this conclusion: homogeneous modes depend on initial conditions or a fluctuation state. Lean illustrates the logical issue with $h(t)=\cos t$, which solves the source-free equation $h''+h=0$ and has $h(0)=1$. This is a mathematical counterexample to the inference from zero forcing to zero field, not a derived cosmological tensor equation. The substrate tensor dynamics and primordial state remain to be supplied before a prediction for $r$ can be made.
 
-
-
-\subsection{Tensor Modes (\texorpdfstring{$r$}{r}): The Gravity Prohibition}
-The tensor-to-scalar ratio $r$ measures the amplitude of primordial gravitational waves. In this framework, gravity is not a fundamental force, but an emergent phenomenon caused by the ``load" of massive topological knots on the lattice (as derived in Paper I, System VI). During the inflationary epoch, the universe is a pure scalar field expansion; topological knots (matter) have not yet condensed. With zero structural load on the lattice, the source term for gravitational waves vanishes.
-\begin{equation}
-r \equiv 0 \quad \text{(No Lattice Load)}
-\end{equation}
-This theory predicts a null result for all searches for primordial tensor modes. Future experiments like CMB-S4 and LiteBIRD will serve as a hard falsification test for this prediction against standard inflationary models.
-
-\CatchFileBetweenTags{\EtaBaryonVal}{calculations/cosmology.tex}{EtaBaryonVal}
-\CatchFileBetweenTags{\EtaBaryonEq}{calculations/cosmology.tex}{EtaBaryonEq}
-\CatchFileBetweenTags{\EtaBaryonExperimentalValue}{calculations/cosmology.tex}{EtaBaryonExperimentalValue}
-\CatchFileBetweenTags{\EtaBaryonAccText}{calculations/cosmology.tex}{EtaBaryonAccText}
-
-\subsection{The Origin of Matter: Baryogenesis and the Baryon-to-Photon Ratio (\texorpdfstring{$\eta$}{eta})}
-Standard cosmology accepts the observed matter-antimatter asymmetry as an initial condition. Our framework derives this ratio, $\eta$, as a direct geometric consequence of the causal initialization sequence.
-
-\paragraph{The Mechanism}
-The Chiral Truncation ($N=32 \to \nu=16$) that establishes the Arrow of Time is not perfectly symmetric. As established in Papers I and III, the Chiral Diode possesses an intrinsic geometric phase offset, quantified by the Jarlskog Invariant ($J \approx 3 \times 10^{-5}$). This creates a microscopic bias, $\epsilon$, in favor of matter over antimatter during the truncation event. This initial bias is then diluted by the geometric volume of the newly initialized manifold.
-
-\paragraph{The Derivation}
-The final baryon-to-photon ratio is the product of the initial bit bias and the geometric dilution factor, $\zeta$.
-\begin{enumerate}
-    \item \textbf{Initial Bit Bias ($\epsilon$):} The fractional surplus of matter states is the Jarlskog Invariant distributed over the available chiral channels.
-    \begin{equation}
-        \epsilon = \frac{J}{\nu} = \frac{3.08 \times 10^{-5}}{16} \approx 1.925 \times 10^{-6}
-    \end{equation}
-
-    \item \textbf{Geometric Dilution ($\zeta$):} This bias is diluted across the total number of available geometric ``slots" in the initial inflationary phase space. This is not a spatial volume, but a dimensionless count of available states, given by the product of the resonant circumference ($\pi\Delta$) and the effective structural channel count ($H_{sys} + \chi/D$).
-    \begin{equation}
-    \begin{split}
-        \zeta & = \frac{1}{(\pi \Delta) \cdot (H_{sys} + \chi/D)} \\
-        & = \frac{1}{(43\pi) \cdot (23 + 2/4)} \\
-        & \approx 3.15 \times 10^{-4}
-    \end{split}
-    \end{equation}
-\end{enumerate}
-The final ratio is the product of these two factors:
-
+\subsection{Baryogenesis: distinguish the CP inputs}
+The proposed conversion and dilution law is
 \begin{equation}
 \begin{split}
-\eta &= \epsilon\zeta = \EtaBaryonEq\\
-&\approx\mathbf{\EtaBaryonVal}.
+\eta_B(J)&=\frac{J}{\nu}
+\frac{1}{(\pi\Delta)(H_{\rm sys}+\chi/D)}\\
+&=\frac{J}{16168\pi},\qquad H_{\rm sys}=23.
 \end{split}
 \end{equation}
+This is an operational hypothesis, not a consequence of a nonzero CP invariant. A baryon-number-changing transition, an initialization state and the subsequent dilution history must justify its factors. A conserved baryon label stays conserved under every iterate even if a separate CP parameter is nonzero; Lean checks that boundary explicitly.
 
-Experimental Value: \EtaBaryonExperimentalValue
-This geometric prediction \EtaBaryonAccText.
-
-
-\CatchFileBetweenTags{\zeqVal}{calculations/cosmology.tex}{zeqVal}
-\CatchFileBetweenTags{\zeqExperimentalValue}{calculations/cosmology.tex}{zeqExperimentalValue}
-\CatchFileBetweenTags{\zeqAccText}{calculations/cosmology.tex}{zeqAccText}
-
-\subsection{Matter-Radiation Equality (\texorpdfstring{$z_{eq}$}{zeq})}
-The redshift of matter-radiation equality, $z_{eq}$, marks the epoch where the energy density of matter (structural knots) equals that of radiation (lattice vibrations). In our framework, this is the geometric crossover point where the universe's \textbf{Structural Load} overcomes its \textbf{Resonant Signal}. We derive this scale as the product of the radiation geometry and the matter capacity.
-\begin{enumerate}
-    \item \textbf{Radiation Scale ($\pi \Delta$):} Radiation modes propagate along the resonant circumference of the lattice, defining the effective "wavelength" of the vacuum energy ($\sim 135.09$).
-    \item \textbf{Matter Capacity ($H_{sys} + \chi$):} Matter is constrained by the total degrees of freedom available for storing structural information: the Systemic Channel ($H_{sys}=23$) plus the Topological Boundary ($\chi=2$), for a total of 25 channels.
-\end{enumerate}
-The equality redshift is the product of these two factors, representing the expansion required to dilute the structural density to match the resonant background.
-\begin{equation}
-z_{eq} = (\pi \Delta) \times (H_{sys} + \chi) = 135.088 \times 25 = \mathbf{\zeqVal}
-\end{equation}
-Experimental Value: \zeqExperimentalValue
-This geometric prediction \zeqAccText.
-
-
-
-
-\section{The Unloaded Universe: The Base Cosmological Rate}
-Following inflation, the universe is a hot, radiation-dominated plasma. In this ``unloaded" state, the lattice has low structural complexity, and its dynamics are governed by the pure geometric ratios derived in Paper I.
-
-The expansion rate of this early universe ($H_0^{early}$) represents the ``idle clock speed" of the vacuum hardware. We derive this rate from the same geometric partition that governs the electroweak sector, unifying cosmology with particle physics. The base expansion rate is proportional to the ratio of the total active degrees of freedom (the Systemic Channel, $H_{sys}=23$) to the fundamental resonant depth of the lattice ($\Delta=43$).
-\begin{equation}
-H_0^{early} \propto \frac{H_{sys}}{\Delta} = \frac{\nu + \sigma + \chi}{\Delta} = \frac{23}{43}
-\end{equation}
-Here the label ``early refers to a present-day rate inferred from early-universe data, not the expansion rate at the primordial epoch. The ratio $23/43$ is dimensionless. Converting it into an absolute rate requires a dimensional calibration not supplied by the ratio alone. In the following comparison, $67.4\pm0.5$ km/s/Mpc is retained as the draft's external early-rate input; it is not claimed as an independently derived number.
-
-
-\CatchFileBetweenTags{\LoadFactorVal}{calculations/cosmology.tex}{LoadFactorVal}
-\CatchFileBetweenTags{\LoadFactorEq}{calculations/cosmology.tex}{LoadFactorEq}
-
-\section{The Loaded Universe: Substrate Budget and Load Factor}
-The revised load model has three dimensionless overheads. The first two are the channel and boundary terms already used above. The third is the single reserved coordinate slot in the $R_M=D\Delta$ manifold budget. With the earlier payload fraction $\eta=(R_M-1)/R_M$, this reservation is exactly its complement, $S_M=1-\eta$.
+Paper IV's complete unitary CKM ansatz has invariant $J_{\rm CKM}\approx\JMatrixVal$. The older independent geometric proposal gives $J_{\rm geo}\approx\JGeometricVal$. The two quantities are unequal in the current formalization and must not be substituted for each other. Applying the same conversion law gives
 \begin{align}
-S_Q&=\frac{1}{2\nu}=\frac{1}{32},\\
-S_T&=\frac{\chi}{\Delta}=\frac{2}{43},\\
-S_M&=\frac{1}{D\Delta}=\frac{1}{172}=1-\frac{171}{172}.
+\eta_B(J_{\rm CKM})&\approx\EtaBaryonVal,\\
+\eta_B(J_{\rm geo})&\approx\EtaBaryonGeoVal.
 \end{align}
-Lean checks the coordinate-slot count and this link to the earlier overhead. A uniform distribution of one reserved unit across $R_M$ slots gives $1/R_M$ per slot. This is internal bookkeeping, requiring no cosmological field equation.
+For the draft reference \EtaBaryonExperimentalValue, the matrix-based value \EtaBaryonAccText; the geometric value differs by approximately $\EtaBaryonGeoSigma\sigma$. These are fixed-input residuals under the candidate law, not a combined statistical test or a reason to choose the closer CP input. The matrix value here is the full unitary invariant before any visible-sector dressing; such a readout correction would be an additional physical choice. The angle formulas and CP-to-baryon conversion need independent justification.
 
-\textbf{Cosmological load rule.} Assign each overhead unit weight and add it to the unloaded baseline:
+\subsection{Matter--radiation equality}
+The geometric candidate is
 \begin{equation}
-\begin{split}
-\mathcal L&=1+S_Q+S_T+S_M\\
-&=1+\frac1{32}+\frac2{43}+\frac1{172}\\
-&=\frac{1491}{1376}\approx1.0835756.
-\end{split}
+z_{\rm eq}^{\rm ansatz}=(\pi\Delta)(H_{\rm sys}+\chi)
+=1075\pi\approx\zeqVal.
 \end{equation}
-The additive weights and the interpretation as a cosmological rate multiplier remain explicit model assumptions. Orthogonality alone does not select an action or transport law. In particular, $S_M$ is paid once here; applying the same coordinate loss again through a separate $\eta$ correction would double-count it unless a distinct operation is specified.
+Against the draft reference \zeqExperimentalValue, it \zeqAccText. The geometric product alone does not establish the equality epoch. Under the separately supplied dilution laws
+\begin{equation}
+\rho_m(z)=\rho_{m0}(1+z)^3,\qquad
+\rho_r(z)=\rho_{r0}(1+z)^4,
+\end{equation}
+positive $\rho_{r0}$ and $z>-1$ give
+\begin{equation}
+1+z_{\rm eq}=\frac{\rho_{m0}}{\rho_{r0}}.
+\end{equation}
+Lean proves this equivalence. Thus the proposed $z_{\rm eq}=1075\pi$ requires $\rho_{m0}/\rho_{r0}=1+1075\pi$. Neither that amplitude ratio nor the dilution dynamics follows from the slot product alone.
