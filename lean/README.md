@@ -1,64 +1,74 @@
-# PM-6-Cosmo: cosmological applications and proof boundaries
+# PM-6-Cosmo: Lean formalization
 
-Lean 4.34.1; keep Papers I–VI as sibling directories. Run `./check.sh` with
-elan available, or set `PM_LAKE_BIN` to the pinned Lake executable. Local
-requirements now include Papers IV and V as well as Papers I and III.
-Existing mathlib caches are reused; no additional package installation is needed.
+Lean 4 proofs for *Persistence Mechanics of the Quantum Vacuum VI*, the
+**cosmological application** of the persistence framework. This is the most
+draft-stage paper of the series: it proposes how a substrate **load** rescales
+cosmological readouts, and checks the accompanying bookkeeping, capacity,
+saturation, thermodynamic and primordial arguments. It builds on Papers I–V.
 
-## Checked modules
+## Main results
 
-| Module | Results and hypotheses |
-| --- | --- |
-| `Scaling` | Candidate tilt `31/32`, load `1491/1376`, count ratios; conditional Hubble/clustering rescaling; local index bounds and unboundedness below saturation. |
-| `SubstrateLoad` | 172 coordinate slots, one-slot complement of the earlier payload fraction, exact revised outputs, fixed-load error propagation and joint product constraint. |
-| `InformationCapacity` | Saturated finite storage cannot absorb fresh independent labels reversibly without extra outcomes/capacity; independent-cell state counts and conditional area law. |
-| `Primordial` | Tilt/channel link, impossibility of injective 32→16 relabeling without retained information, sufficient binary record, two distinct CP-to-baryon estimates, baryon-label conservation under iteration, nonzero source-free oscillator counterexample. |
-| `Saturation` | Residual-capacity speed and its saturation limit, exact weak-load remainder and strict two-load mean-index inequality. The local law is supplied; there is no exterior metric theorem. |
-| `Background` | Matter/radiation equality under stipulated dilution laws, density derivative and effective equation of state under a load-proportional density and supplied continuity equation. |
-| `Thermodynamics` | Entropy derivative, first-law temperature, conditional `1/(8πM)` comparison and cell-area normalization. Geometry, entropy coefficient and energy law are inputs. |
-| `NeutrinoCompatibility` | Direct use of upstream small-sum bounds and factor-six exclusion; no common rescaling/relabeling of the tower fits the fixed two splitting windows. |
+- **Exact load.** `Scaling.exact_ratios`: the load is `L = 1491/1376`, the tilt
+  `31/32`, the dark ratio `31/6` (all exact rationals).
+- **Certified headline numbers.** `SubstrateLoad.revised_numerical_outputs` and
+  `revised_numerical_bounds` give exact rationals and tight decimal enclosures for
+  the paper's conditional rescalings `H_late = 67.4·L` and `S8_late = 0.832/L`.
+- **Certified tensions.** `Tensions` certifies the propagated `0.5`/`0.013`
+  uncertainties and the dark count `248/(48(1−2/43+α))`; `Scaling.disjoint_dark_count_check`
+  proves the `31/6` vs `25/6` distinction. `Hypotheses.CosmoModel` bundles the
+  load/response/continuity premises in one structure.
+- **Readout + modes.** `Readout` defines the scale factor as the cube root of a
+  comoving cell's volume and ties its density to PM-2 `Continuity` (matter `w=0`);
+  `Modes` shows a source-free mode's amplitude/power is free, so the primordial
+  spectrum needs initial data.
+- **Persistence selection (reused).** `PersistenceSelection` states the cosmology-
+  facing corollaries of `PM/lean`'s `PMFramework.Selection`
+  (`higher_rate_vanishes`, `least_rate_takes_over`, `uniform_law_selected`):
+  among an explicit option family, the least-cost/persistent member survives.
+- **Finite capacity.** `InformationCapacity`: a saturated finite register cannot
+  injectively encode a fresh independent label without extra capacity.
+- **Saturation.** `Saturation`: residual-capacity speed, its zero at saturation,
+  and exact weak-load remainder identities (local, not a metric).
+- **Background / thermodynamics.** `Background`, `Thermodynamics`: conditional
+  dilution/continuity and first-law identities (geometry, entropy law are inputs).
+- **Primordial.** `Primordial`: the 32→16 relabeling obstruction, a retained
+  binary record, two CP-to-baryon estimates with certified windows, and
+  baryon-label conservation under iteration (CP alone gives no asymmetry).
+- **Neutrino compatibility.** `NeutrinoCompatibility`: no common-scale tower fits
+  the fixed oscillation windows; the factor-six proposal is excluded upstream.
 
-## Numerical and upstream consistency
+## Where to look
 
-The revised load is `1 + 1/32 + 2/43 + 1/172 = 1491/1376`.
-With the supplied cosmological response laws and fixed draft inputs, this gives
-`H_late = 73.032994186…` km/s/Mpc and `S8 = 0.767828303…`.
-The additive weights and the response law remain constitutive assumptions.
-The exact joint product constraint prevents independently tuning both outputs.
+- **[OVERVIEW.md](OVERVIEW.md)** — the module map, the certified numbers, and the
+  **draft-status risks / possible bugs** (frozen inputs, CP discrepancy, dark-ratio
+  ambiguity). **Start here.**
+- **[REVIEW-AND-NEXT.md](REVIEW-AND-NEXT.md)** — the remaining work, split into
+  Lean-checkable arithmetic and physical model inputs.
 
-Paper IV's complete unitary CKM ansatz gives `J ≈ 3.02287×10⁻⁵`; the older
-independent geometric formula gives `J_geo ≈ 3.08490×10⁻⁵`.
-The proposed conversion `eta_B(J) = J/(16168π)` therefore gives approximately
-`5.95132×10⁻¹⁰` versus `6.07344×10⁻¹⁰`. The calculator now displays both rather
-than silently identifying them. The former differs from the draft's fixed
-`(6.12 ± 0.04)×10⁻¹⁰` reference by about 4.22 quoted errors. This is conditional
-arithmetic, not a likelihood analysis or a derivation of baryogenesis.
+## Build and audit
 
-The historical factor-six contextual neutrino proposal is retained as a tested
-candidate, not a resolution. A common multiplier cannot change the tower's
-squared-gap proportions `(1,1849,1850)`. A small mass sum does not establish an
-acceptable oscillation spectrum. A different propagation law remains possible.
+Lean 4.34.1; keep Papers I–VI as sibling directories. Then:
 
-## Verification and generated values
+```sh
+source ~/.elan/env
+./check.sh
+```
 
-`check.sh` builds the default library, audits all project declarations against
-only `propext`, `Classical.choice` and `Quot.sound`, and runs
-`../calculations/check_load_consistency.py`. The restored Python checker uses
-exact fractions for the load-derived displays and checks every generated LaTeX
-tag against the calculator. It has no third-party dependencies.
+`check.sh` builds `PMCosmo`, strictly audits declarations against `propext`,
+`Classical.choice`, `Quot.sound`, and runs `../calculations/check_load_consistency.py`
+(exact-fraction arithmetic and LaTeX tag freshness).
 
-The display calculator uses ordinary floating-point arithmetic; Lean supplies
-exact rational enclosures for the certified quantities. Observational inputs
-are frozen comparisons from the draft, not an updated survey.
+## Verification
 
-On 2026-10-30, the pinned `./check.sh` passed **3248 build jobs**, the
-strict audit of **146 PMCosmo declarations**, and all **53 generated tags**.
-The existing `paper/_main.tex` also compiled successfully in the desktop editor.
+**3485** build jobs, **zero** errors, **zero** warnings.
+**238** strict-audited PMCosmo declarations; **53** generated tags checked.
+Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
+Re-run `./check.sh` for current numbers.
 
-## What remains
+## Draft status
 
-See `REVIEW-AND-NEXT.md`. The leading task is a substrate-to-background evolution
-and readout law, followed by its perturbations. Counts and positive finite
-budgets alone do not determine an expansion history, a spectral index, a CP-to-
-baryon conversion, a global horizon, Hawking radiation or a dark-sector density.
-The manuscript now separates these proposals from the consequences Lean checks.
+Observational inputs (`67.4`, `0.832`, `(6.12 ± 0.04)×10⁻¹⁰`, …) are **frozen
+comparison data**, not an updated survey. The load-response rules, background
+laws and entropy/energy laws are **constitutive assumptions**. The headline
+`H_late`/`S8` values are conditional rescalings, not a derivation of expansion
+history or a likelihood result. See OVERVIEW for the specific tensions.

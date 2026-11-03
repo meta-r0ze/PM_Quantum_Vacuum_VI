@@ -77,4 +77,11 @@ theorem vacuum_equation_iff (a L Ldot : ℝ) (ha : 0 < a) (hL : L ≠ 0) :
     · exact False.elim (hd hm)
   · intro h; simp [h]
 
+
+/-- The proposed geometric equality redshift `z_eq = 1075π`, with a rational enclosure. -/
+theorem z_eq_bounds : (3377.2121 : ℝ) < 1075*Real.pi ∧ 1075*Real.pi < 3377.2122 := by
+  have hp1 := Real.pi_gt_d20
+  have hp2 := Real.pi_lt_d20
+  constructor <;> nlinarith
+
 end PMCosmo.Background
