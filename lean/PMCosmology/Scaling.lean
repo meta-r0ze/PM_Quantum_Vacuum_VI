@@ -4,7 +4,7 @@ import Mathlib.Tactic
 /-! Conditional arithmetic and saturation identities, not a perturbation or
 Einstein-equation derivation. Empirical anchors are external inputs. -/
 noncomputable section
-namespace PMCosmo
+namespace PMCosmology
 
 def scalarIndex : ℝ := 1-1/32
 def loadFactor : ℝ := 1+1/32+2/43+1/172
@@ -71,4 +71,4 @@ theorem disjoint_dark_count_check :
     ((248 : ℝ)-48)/48 = 25/6 ∧ darkRatio = 1+25/6 := by
   norm_num [darkRatio]
 
-end PMCosmo
+end PMCosmology

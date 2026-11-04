@@ -1,20 +1,20 @@
-import PMDecay.NeutrinoContext
+import PMElementaryParticles.NeutrinoContext
 
 /-! Apply upstream exclusions to Paper VI's proposed contextual neutrino law.
 Benchmarks are frozen inputs from the earlier audit, not current observations.
 No alternate propagation spectrum or cosmological likelihood is derived. -/
 noncomputable section
-namespace PMCosmo.NeutrinoCompatibility
-open PMNested.FloorNeutrino
+namespace PMCosmology.NeutrinoCompatibility
+open PMConstants.FloorNeutrino
 
 /-- A small mass sum alone is not a successful oscillation spectrum. -/
 theorem small_sum_and_bad_splittings :
-    PMNested.Bulk.floorMass PMNested.CertifiedConstants.α meEV +
-      PMNested.Bulk.floorMass PMNested.CertifiedConstants.α meEV/43 +
-      PMNested.Bulk.floorMass PMNested.CertifiedConstants.α meEV/43^2 < 0.0095 ∧
-    17 < ((6*PMDecay.NeutrinoContext.mRest)^2-PMDecay.NeutrinoContext.mRest^2-
+    PMConstants.Bulk.floorMass PMConstants.CertifiedConstants.α meEV +
+      PMConstants.Bulk.floorMass PMConstants.CertifiedConstants.α meEV/43 +
+      PMConstants.Bulk.floorMass PMConstants.CertifiedConstants.α meEV/43^2 < 0.0095 ∧
+    17 < ((6*PMElementaryParticles.NeutrinoContext.mRest)^2-PMElementaryParticles.NeutrinoContext.mRest^2-
       0.002534)/0.000025 :=
-  ⟨tower_sum, PMDecay.NeutrinoContext.weak_minus_rest_excluded⟩
+  ⟨tower_sum, PMElementaryParticles.NeutrinoContext.weak_minus_rest_excluded⟩
 
 /-- A common response factor, including six, cannot fit both fixed
 oscillation windows even when all possible pairwise gaps may be relabeled. -/
@@ -31,4 +31,4 @@ theorem no_common_scale_fits_windows (base scale : ℝ) (h : scale*base ≠ 0)
   · apply (div_lt_iff₀ hj).mpr
     linarith
 
-end PMCosmo.NeutrinoCompatibility
+end PMCosmology.NeutrinoCompatibility

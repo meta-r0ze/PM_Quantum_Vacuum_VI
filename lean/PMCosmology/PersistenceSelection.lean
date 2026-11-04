@@ -1,12 +1,12 @@
-import PMFramework.Selection
-import PMFramework.Gibbs
-import PMFramework.LawSelection
+import PersistenceMechanics.Selection
+import PersistenceMechanics.Gibbs
+import PersistenceMechanics.LawSelection
 
 /-!
 # Persistence selection, reused from the framework (`PM/lean`)
 
 The persistence-selection machinery is **already proved in `PM/lean`**
-(`PMFramework`): survival composition (`ExponentialFilter`), the cost-proportional
+(`PersistenceMechanics`): survival composition (`ExponentialFilter`), the cost-proportional
 hazard (`HazardForm`), the selection principle (`Selection`, *Proposition:
 Selection by Operational Action*), the finite Gibbs / zero-temperature limit
 (`Gibbs`) and law selection (`LawSelection`). This module does **not** re-prove
@@ -29,7 +29,7 @@ missing background dynamics.
 -/
 
 noncomputable section
-namespace PMCosmo.PersistenceSelection
+namespace PMCosmology.PersistenceSelection
 open Filter Topology Finset
 
 /-- **A higher-rate candidate vanishes.** If candidate `i` has asymptotic cost
@@ -39,9 +39,9 @@ other dies" argument. -/
 theorem higher_rate_vanishes {ι : Type*} [Fintype ι] [Nonempty ι]
     {p : ι → ℝ} (hp : ∀ i, 0 < p i) {β : ℝ} (hβ : 0 < β) (s : ι → ℝ)
     {i j : ι} (hij : s j < s i) :
-    Tendsto (fun T => PMFramework.Selection.survivor p β (fun k => s k * T) i)
+    Tendsto (fun T => PersistenceMechanics.Selection.survivor p β (fun k => s k * T) i)
       atTop (𝓝 0) :=
-  PMFramework.Selection.selection hp hβ (fun k T => s k * T) s
+  PersistenceMechanics.Selection.selection hp hβ (fun k T => s k * T) s
     (fun _ => by simp) hij
 
 /-- **The least-rate candidates take over** the surviving ensemble. -/
@@ -49,8 +49,8 @@ theorem least_rate_takes_over {ι : Type*} [Fintype ι] [Nonempty ι]
     {p : ι → ℝ} (hp : ∀ i, 0 < p i) {β : ℝ} (hβ : 0 < β) (s : ι → ℝ) :
     Tendsto (fun T => ∑ i ∈ univ.filter
         (fun i => s i = univ.inf' univ_nonempty s),
-        PMFramework.Selection.survivor p β (fun k => s k * T) i) atTop (𝓝 1) :=
-  PMFramework.Selection.selection_principle hp hβ (fun k T => s k * T) s
+        PersistenceMechanics.Selection.survivor p β (fun k => s k * T) i) atTop (𝓝 1) :=
+  PersistenceMechanics.Selection.selection_principle hp hβ (fun k T => s k * T) s
     (fun _ => by simp)
 
 /-- **Law selection.** Among candidate laws scored by average return cost, the
@@ -58,15 +58,15 @@ uniform law is the survivor (`LawSelection.selected_uniform_average`). This is t
 "there is no free choice of law" statement, within an explicit law family. -/
 theorem uniform_law_selected {Ω : Type*} [Fintype Ω] [Nonempty Ω] {ι : Type*}
     [Fintype ι] [Nonempty ι] (L : ι → Ω → ℝ)
-    (hL : ∀ i, PMFramework.LawSelection.PosLaw (L i))
-    (hu : ∃ i, L i = PMFramework.LawSelection.uniform) {w : ι → ℝ} (hw : ∀ i, 0 < w i)
+    (hL : ∀ i, PersistenceMechanics.LawSelection.PosLaw (L i))
+    (hu : ∃ i, L i = PersistenceMechanics.LawSelection.uniform) {w : ι → ℝ} (hw : ∀ i, 0 < w i)
     {β : ℝ} (hβ : 0 < β) (S : ι → ℝ → ℝ)
     (hS : ∀ i, Tendsto
-      (fun T => (S i T - PMFramework.LawSelection.averageRate (L i) * T) / T)
+      (fun T => (S i T - PersistenceMechanics.LawSelection.averageRate (L i) * T) / T)
       atTop (𝓝 0)) :
     Tendsto (fun T => ∑ i ∈ univ.filter
-        (fun i => L i = PMFramework.LawSelection.uniform),
-        PMFramework.Selection.survivor w β (fun k => S k T) i) atTop (𝓝 1) :=
-  PMFramework.LawSelection.selected_uniform_average L hL hu hw hβ S hS
+        (fun i => L i = PersistenceMechanics.LawSelection.uniform),
+        PersistenceMechanics.Selection.survivor w β (fun k => S k T) i) atTop (𝓝 1) :=
+  PersistenceMechanics.LawSelection.selected_uniform_average L hL hu hw hβ S hS
 
-end PMCosmo.PersistenceSelection
+end PMCosmology.PersistenceSelection

@@ -1,4 +1,4 @@
-import PMCosmo.Primordial
+import PMCosmology.Primordial
 import PMAction.RealSpaceFourier
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 
@@ -19,7 +19,7 @@ this module makes no spectrum claim.
 -/
 
 noncomputable section
-namespace PMCosmo.Modes
+namespace PMCosmology.Modes
 open Real
 open Matrix PMAction PMAction.RealSpaceFourier
 
@@ -85,4 +85,4 @@ theorem power_free (k P : ℝ) (hP : 0 ≤ P) :
 theorem homogeneous_free (A t : ℝ) : mode 0 A 0 t = A := by
   simp [mode]
 
-end PMCosmo.Modes
+end PMCosmology.Modes

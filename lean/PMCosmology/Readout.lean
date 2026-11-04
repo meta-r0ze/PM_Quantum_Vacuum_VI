@@ -1,4 +1,4 @@
-import PMCosmo.Background
+import PMCosmology.Background
 import PMAction.Continuity
 
 /-!
@@ -20,7 +20,7 @@ readout does not derive the expansion; it fixes what `a` means.
 -/
 
 noncomputable section
-namespace PMCosmo.Readout
+namespace PMCosmology.Readout
 
 /-- A coarse-grained homogeneous cell: physical volume `V = a³`, carrying a
 conserved charge `N`. -/
@@ -61,4 +61,4 @@ theorem w_matter :
 
 end HomogeneousReadout
 
-end PMCosmo.Readout
+end PMCosmology.Readout

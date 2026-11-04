@@ -4,7 +4,7 @@ import Mathlib.Tactic
 /-! Finite substrate capacity and homogeneous-cell state counting.
 No continuum metric, radiation process or black-hole entropy normalization is assumed. -/
 noncomputable section
-namespace PMCosmo.InformationCapacity
+namespace PMCosmology.InformationCapacity
 
 /-- A full finite register cannot retain its old labels and injectively encode a fresh label. -/
 theorem no_fresh_label_at_saturation (C : ℕ) :
@@ -53,4 +53,4 @@ theorem binary_area_normalization (cells : ℕ) (l : ℝ) (hl : l ≠ 0) :
     information cells 2 = ((cells : ℝ)*(4*l^2))*(Real.log 2/(4*l^2)) := by
   exact area_proportional_information cells 2 (4*l^2) (by positivity)
 
-end PMCosmo.InformationCapacity
+end PMCosmology.InformationCapacity

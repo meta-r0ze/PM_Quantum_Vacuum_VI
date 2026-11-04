@@ -1,5 +1,5 @@
-import PMCosmo.Background
-import PMCosmo.Scaling
+import PMCosmology.Background
+import PMCosmology.Scaling
 
 /-!
 # The Paper VI hypothesis ledger
@@ -16,8 +16,8 @@ remain model inputs. The point is to make the conditional structure explicit.
 -/
 
 noncomputable section
-namespace PMCosmo.Hypotheses
-open PMCosmo
+namespace PMCosmology.Hypotheses
+open PMCosmology
 
 /-- The constitutive premises Paper VI uses, in one place. Each field is an input. -/
 structure CosmoModel where
@@ -79,4 +79,4 @@ theorem headline (hL : M.load = loadFactor) (hH : M.H_early = 674 / 10) :
 
 end CosmoModel
 
-end PMCosmo.Hypotheses
+end PMCosmology.Hypotheses

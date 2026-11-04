@@ -1,14 +1,14 @@
-import PMCosmo.Scaling
-import PMArch.Impedance
-import PMNested.Partition
+import PMCosmology.Scaling
+import PMSubstrate.Impedance
+import PMConstants.Partition
 import Mathlib.Data.Fintype.Prod
 
 /-! Internal finite-budget bookkeeping and the conditional cosmological load law.
 The numerical multiplier's cosmological interpretation is an explicit model input. -/
 noncomputable section
-namespace PMCosmo.SubstrateLoad
+namespace PMCosmology.SubstrateLoad
 open Finset
-open PMArch
+open PMSubstrate
 
 abbrev CoordinateSlots := Fin baseline.dimension × Fin baseline.period
 
@@ -36,9 +36,9 @@ theorem complement_of_payload : manifoldStress = 1-payloadFraction := by
   norm_num [manifoldStress, payloadFraction, CoordinateSlots, baseline, Fintype.card_prod]
 
 /-- Direct link to the earlier paper's already formalized payload fraction. -/
-theorem earlier_payload_complement : manifoldStress = 1-PMNested.overhead := by
+theorem earlier_payload_complement : manifoldStress = 1-PMConstants.overhead := by
   rw [reserved_slot_fraction]
-  norm_num [PMNested.overhead]
+  norm_num [PMConstants.overhead]
 
 theorem load_from_budget_terms : loadFactor = 1+channelStress+boundaryStress+manifoldStress := by
   norm_num [loadFactor, channelStress, boundaryStress, manifoldStress, coordinate_slots, baseline]
@@ -83,4 +83,4 @@ theorem joint_targets_require_product (H0 S0 H1 S1 L : ℝ)
 theorem draft_central_targets_not_exact :
     (674 : ℝ)/10*((832 : ℝ)/1000) ≠ (73 : ℝ)*((776 : ℝ)/1000) := by norm_num
 
-end PMCosmo.SubstrateLoad
+end PMCosmology.SubstrateLoad

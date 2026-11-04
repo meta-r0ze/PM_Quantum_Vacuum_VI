@@ -1,11 +1,11 @@
-import PMCosmo.Scaling
+import PMCosmology.Scaling
 import Mathlib.Analysis.Calculus.Deriv.Mul
 
 /-! Conditional homogeneous-background consistency. Density dilution laws,
 scale factor, continuity equation and the identification of load with density
 are premises. Neither Friedmann dynamics nor those premises are derived here. -/
 noncomputable section
-namespace PMCosmo.Background
+namespace PMCosmology.Background
 
 /-- Supplied pressureless-matter and radiation dilution, in terms of redshift. -/
 def matter (ρm z : ℝ) : ℝ := ρm*(1+z)^3
@@ -84,4 +84,4 @@ theorem z_eq_bounds : (3377.2121 : ℝ) < 1075*Real.pi ∧ 1075*Real.pi < 3377.2
   have hp2 := Real.pi_lt_d20
   constructor <;> nlinarith
 
-end PMCosmo.Background
+end PMCosmology.Background

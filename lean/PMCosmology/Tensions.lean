@@ -1,5 +1,5 @@
-import PMCosmo.Scaling
-import PMDynamics.CKM
+import PMCosmology.Scaling
+import PMFlavor.CKM
 
 /-!
 # The tension arithmetic, certified in Lean
@@ -21,8 +21,8 @@ model inputs; only the arithmetic is certified.
 -/
 
 noncomputable section
-namespace PMCosmo.Tensions
-open PMCosmo PMDynamics
+namespace PMCosmology.Tensions
+open PMCosmology PMFlavor
 
 /-- Exact propagated early-rate uncertainty `(1/2)·L`. -/
 theorem hubbleInputSigma_exact : (1 / 2 : ℝ) * loadFactor = 1491 / 2752 := by
@@ -66,4 +66,4 @@ theorem omegaRatio_bounds : (5.3775 : ℝ) < omegaRatio ∧ omegaRatio < 5.3776 
   · rw [div_lt_iff₀ hD]
     nlinarith [hu, hl, hx0]
 
-end PMCosmo.Tensions
+end PMCosmology.Tensions

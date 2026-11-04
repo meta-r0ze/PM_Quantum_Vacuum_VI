@@ -1,4 +1,4 @@
-import PMCosmo.InformationCapacity
+import PMCosmology.InformationCapacity
 import Mathlib.Analysis.Calculus.Deriv.Pow
 import Mathlib.Analysis.Calculus.Deriv.Mul
 
@@ -6,7 +6,7 @@ import Mathlib.Analysis.Calculus.Deriv.Mul
 No black-hole metric, Hawking state, radiation mechanism or entropy coefficient
 is selected by these identities. The comparison uses G=ℏ=c=k_B=1. -/
 noncomputable section
-namespace PMCosmo.Thermodynamics
+namespace PMCosmology.Thermodynamics
 
 /-- A supplied entropy coefficient and quadratic mass-area relation. -/
 def entropy (coefficient M : ℝ) : ℝ := coefficient*M^2
@@ -55,4 +55,4 @@ theorem cell_area_normalization (cells q : ℕ) (l : ℝ) (hl : l ≠ 0) :
   rw [InformationCapacity.information_adds]
   field_simp
 
-end PMCosmo.Thermodynamics
+end PMCosmology.Thermodynamics

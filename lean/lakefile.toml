@@ -1,9 +1,9 @@
 name = "pm_cosmo"
 version = "0.1.0"
-defaultTargets = ["PMCosmo"]
+defaultTargets = ["PMCosmology"]
 
 [[lean_lib]]
-name = "PMCosmo"
+name = "PMCosmology"
 
 [[require]]
 name = "pm_arch"

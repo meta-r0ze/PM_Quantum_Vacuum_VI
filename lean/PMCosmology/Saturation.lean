@@ -1,11 +1,11 @@
-import PMCosmo.Scaling
+import PMCosmology.Scaling
 import Mathlib.Analysis.Calculus.Deriv.Basic
 
 /-! Consequences of the stipulated local capacity law. These are local index
 and clock-speed identities, not a metric, an event horizon, or an exterior-field
 solution. In particular a local convexity result is not Birkhoff violation. -/
 noncomputable section
-namespace PMCosmo.Saturation
+namespace PMCosmology.Saturation
 
 /-- Residual-capacity clock speed, extended continuously to saturation.
 Unlike division by the index, this expression is well behaved at K=C. -/
@@ -69,4 +69,4 @@ theorem speed_tendsto (c C : ℝ) :
   have h : Continuous (speed c C) := by unfold speed; fun_prop
   simpa only [speed_at_capacity] using h.continuousAt.tendsto (x := C)
 
-end PMCosmo.Saturation
+end PMCosmology.Saturation
