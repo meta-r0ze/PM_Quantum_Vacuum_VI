@@ -1,4 +1,4 @@
-# PM-6-Cosmo: Lean formalization
+# PMCosmology — Paper VI cosmology library
 
 Lean 4 proofs for *Persistence Mechanics of the Quantum Vacuum VI*, the
 **cosmological application** of the persistence framework. This is the most
@@ -55,15 +55,12 @@ source ~/.elan/env
 ```
 
 `check.sh` builds `PMCosmology`, strictly audits declarations against `propext`,
-`Classical.choice`, `Quot.sound`, and runs `../calculations/check_load_consistency.py`
+`Classical.choice`, `Quot.sound`, and runs `../../calculations/check_load_consistency.py`
 (exact-fraction arithmetic and LaTeX tag freshness).
 
 ## Verification
 
-**3485** build jobs, **zero** errors, **zero** warnings.
-**238** strict-audited PMCosmology declarations; **53** generated tags checked.
-Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
-Re-run `./check.sh` for current numbers.
+Run `./check.sh`. Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
 
 ## Draft status
 

@@ -1,4 +1,4 @@
-# PM-6-Cosmo: overview of checked results
+# PMCosmology — overview of checked results
 
 The single map of what Paper VI proves and what remains an input or a draft-stage
 proposal. Open work is in [`REVIEW-AND-NEXT.md`](REVIEW-AND-NEXT.md); build
@@ -90,7 +90,4 @@ persistence can rank anything.
 
 ## Verification
 
-**3485** build jobs, **zero** errors, **zero** warnings.
-**239** strict-audited PMCosmology declarations; **53** generated tags checked.
-Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
-Run `./check.sh` for current numbers.
+Run `./check.sh`. Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.

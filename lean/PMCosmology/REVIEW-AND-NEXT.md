@@ -1,9 +1,8 @@
-# Paper VI: open work (todo)
+# PMCosmology — open work (todo)
 
 Checked mathematics and the certified numbers are in [`OVERVIEW.md`](OVERVIEW.md).
 This file is only what remains, split by what a Lean proof can close (**Part A**)
-and what needs a physical/model law (**Part B**). Paper VI builds clean (3485
-jobs, zero warnings, 238 strict-audited declarations, 53 tags checked). This is
+and what needs a physical/model law (**Part B**). Paper VI builds clean; run `./check.sh` for current counts. This is
 the most draft-stage paper, so also read **Draft-status risks** first.
 
 ## Draft-status risks / possible bugs
@@ -113,7 +112,5 @@ all Part B:
 4. **Part B 7** (joint likelihood).
 
 ## Verification
-**3485** build jobs, **zero** errors, **zero** warnings.
-**239** strict-audited PMCosmology declarations; **53** generated tags checked.
-Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
-Run `./check.sh` for current numbers.
+
+Run `./check.sh`. Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
