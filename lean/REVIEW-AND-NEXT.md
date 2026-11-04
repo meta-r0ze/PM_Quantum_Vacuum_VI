@@ -48,7 +48,7 @@ machine-checkable input list. (Entropy laws remain an explicit Part B input.)
 ## Part B — physical model inputs
 
 **Persistence is not a free choice where an option family and cost exist.** The
-selection principle is already proved in `PM/lean` (`PMFramework.Selection`);
+selection principle is already proved in `PM/lean` (`PersistenceMechanics.Selection`);
 `PersistenceSelection` reuses it (`higher_rate_vanishes`, `least_rate_takes_over`,
 `uniform_law_selected`). So each "choose X" below should first be asked as: *is X
 the least-cost member of an explicit option family?* For (1) and (4) the substrate
@@ -81,7 +81,7 @@ supplied before persistence can rank anything; that is the real missing input.
    not an asymmetry. Grounded upstream now: PM-3 `BaryonNumber` defines baryon
    number on the 16 channels from the axis ledger (`B−L = ReferenceAxis.bl`) and
    proves native reversible gates conserve total baryon
-   (`PMNested.BaryonNumber.no_asymmetry_from_reversible`). So an asymmetry needs a
+   (`PMConstants.BaryonNumber.no_asymmetry_from_reversible`). So an asymmetry needs a
    *non-baryon-preserving* (irreversible) event, not a CP phase. Derive the event, conservation channels,
    initialization and dilution factor; reconcile the unequal CP formulas rather
    than selecting; derive (or replace) a nonuniform neutrino propagation law
@@ -114,6 +114,6 @@ all Part B:
 
 ## Verification
 **3485** build jobs, **zero** errors, **zero** warnings.
-**239** strict-audited PMCosmo declarations; **53** generated tags checked.
+**239** strict-audited PMCosmology declarations; **53** generated tags checked.
 Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
 Run `./check.sh` for current numbers.

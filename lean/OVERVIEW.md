@@ -2,8 +2,8 @@
 
 The single map of what Paper VI proves and what remains an input or a draft-stage
 proposal. Open work is in [`REVIEW-AND-NEXT.md`](REVIEW-AND-NEXT.md); build
-instructions are in [`README.md`](README.md). Sources are under `PMCosmo/`,
-imported by `PMCosmo.lean`. Theorem names are entry points, not exhaustive lists.
+instructions are in [`README.md`](README.md). Sources are under `PMCosmology/`,
+imported by `PMCosmology.lean`. Theorem names are entry points, not exhaustive lists.
 This is the most draft-stage paper, so the "risks" section is as important as the
 "proved" section.
 
@@ -13,7 +13,7 @@ This is the most draft-stage paper, so the "risks" section is as important as th
 | --- | --- | --- |
 | `Scaling` | Exact ratios `L = 1491/1376`, tilt `31/32`, dark ratio `31/6`; conditional Hubble/clustering rescaling; local index bounds | The additive weights and the response rules |
 | `Tensions` | Certified propagated uncertainties `(1/2)L`, `(13/1000)/L` and the dark count `248/(48(1−2/43+α))` enclosure; dark-count `31/6` vs `25/6` (in `Scaling`) | Frozen inputs `0.5`, `0.013`, `5.36`; `α⁻¹` bounds |
-| `PersistenceSelection` | Reuses `PMFramework.Selection`: `higher_rate_vanishes`, `least_rate_takes_over`, `uniform_law_selected` — persistence selects the least-cost member of an explicit family; no re-proof | The option family and its cost |
+| `PersistenceSelection` | Reuses `PersistenceMechanics.Selection`: `higher_rate_vanishes`, `least_rate_takes_over`, `uniform_law_selected` — persistence selects the least-cost member of an explicit family; no re-proof | The option family and its cost |
 | `Hypotheses` | `CosmoModel` bundles the load/response/continuity premises and re-derives product invariance, `w`, vacuum-iff, and the headline `H_late` | The premises themselves |
 | `SubstrateLoad` | 172 coordinate slots, one-slot complement of the payload fraction, exact revised outputs and tight bounds, fixed-load error propagation, joint product constraint | The load's cosmological interpretation |
 | `InformationCapacity` | Saturated finite storage cannot injectively absorb a fresh label without extra capacity; independent-cell counts; conditional area law | No continuum metric/radiation process |
@@ -53,7 +53,7 @@ input is ≈4.22 quoted errors away. A CP invariant alone is not an asymmetry
 ## Persistence selection (reused from `PM/lean`)
 
 The selection principle is **not** re-proved here: `PM/lean`'s
-`PMFramework.Selection` proves it (`selection_principle`, `selection`,
+`PersistenceMechanics.Selection` proves it (`selection_principle`, `selection`,
 `selection_timescale`), with `HazardForm` deriving the cost-proportional hazard and
 `Gibbs`/`LawSelection` giving the zero-temperature and law-selection limits.
 `PersistenceSelection` states the cosmology-facing corollaries:
@@ -91,6 +91,6 @@ persistence can rank anything.
 ## Verification
 
 **3485** build jobs, **zero** errors, **zero** warnings.
-**239** strict-audited PMCosmo declarations; **53** generated tags checked.
+**239** strict-audited PMCosmology declarations; **53** generated tags checked.
 Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
 Run `./check.sh` for current numbers.

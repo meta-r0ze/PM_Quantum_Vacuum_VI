@@ -22,7 +22,7 @@ saturation, thermodynamic and primordial arguments. It builds on Papers I–V.
   `Modes` shows a source-free mode's amplitude/power is free, so the primordial
   spectrum needs initial data.
 - **Persistence selection (reused).** `PersistenceSelection` states the cosmology-
-  facing corollaries of `PM/lean`'s `PMFramework.Selection`
+  facing corollaries of `PM/lean`'s `PersistenceMechanics.Selection`
   (`higher_rate_vanishes`, `least_rate_takes_over`, `uniform_law_selected`):
   among an explicit option family, the least-cost/persistent member survives.
 - **Finite capacity.** `InformationCapacity`: a saturated finite register cannot
@@ -54,14 +54,14 @@ source ~/.elan/env
 ./check.sh
 ```
 
-`check.sh` builds `PMCosmo`, strictly audits declarations against `propext`,
+`check.sh` builds `PMCosmology`, strictly audits declarations against `propext`,
 `Classical.choice`, `Quot.sound`, and runs `../calculations/check_load_consistency.py`
 (exact-fraction arithmetic and LaTeX tag freshness).
 
 ## Verification
 
 **3485** build jobs, **zero** errors, **zero** warnings.
-**238** strict-audited PMCosmo declarations; **53** generated tags checked.
+**238** strict-audited PMCosmology declarations; **53** generated tags checked.
 Permitted axioms `propext`, `Classical.choice`, `Quot.sound`.
 Re-run `./check.sh` for current numbers.
 
